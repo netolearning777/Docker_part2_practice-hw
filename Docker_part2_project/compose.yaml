@@ -1,0 +1,53 @@
+include:
+  - proxy.yaml
+
+# The parser will ignore extension fields prefixed with x-
+x-deploy: &deploy-dev
+  deploy:
+    resources:
+      limits:
+        cpus: "1"
+        memory: 512M
+      reservations:
+        memory: 256M
+x-env_file: &env_file
+  env_file:
+    - .env
+x-restart: &restart
+  restart: always #no, on-failure , always(default), unless-stopped
+
+services:
+  web:
+    <<: [*deploy-dev, *restart]
+    build:
+      context: .
+      dockerfile: Dockerfile_multistage.python
+    networks:
+      backend:
+        ipv4_address: 172.20.0.5
+    depends_on:
+      mysql:
+        condition: service_healthy
+      
+  mysql:
+    <<: [*deploy-dev, *env_file, *restart]
+    image: mariadb:11.4
+    networks:
+      backend:
+        ipv4_address: 172.20.0.10
+    #environment:
+      #- MYSQL_ROOT_HOST="%"
+    healthcheck:
+      #test: ["CMD", "mariadb-admin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      test: ["CMD-SHELL", "MYSQL_PWD=$$MYSQL_ROOT_PASSWORD mariadb-admin ping -h 127.0.0.1 -u root"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+networks:
+  backend:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
