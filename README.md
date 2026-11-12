@@ -46,9 +46,20 @@
 1. Запустите в Yandex Cloud ВМ (вам хватит 2 Гб Ram).
 2. Подключитесь к Вм по ssh и установите docker.
 3. Напишите bash-скрипт, который скачает ваш fork-репозиторий в каталог /opt и запустит проект целиком.
+
+[ссылка на deploy.sh](https://github.com/netolearning777/Docker_part2_practice-hw/blob/main/deploy.sh)
+
 4. Зайдите на сайт проверки http подключений, например(или аналогичный): ```https://check-host.net/check-http``` и запустите проверку вашего сервиса ```http://<внешний_IP-адрес_вашей_ВМ>:8090```. Таким образом трафик будет направлен в ingress-proxy. Трафик должен пройти через цепочки: Пользователь → Internet → Nginx → HAProxy → FastAPI(запись в БД) → HAProxy → Nginx → Internet → Пользователь
-5. (Необязательная часть) Дополнительно настройте remote ssh context к вашему серверу. Отобразите список контекстов и результат удаленного выполнения ```docker ps -a```
-6. Повторите SQL-запрос на сервере и приложите скриншот и ссылку на fork.
+
+![](https://github.com/netolearning777/Docker_part2_practice-hw/blob/main/img/2026-11-12_14-24-11.png)
+
+![](https://github.com/netolearning777/Docker_part2_practice-hw/blob/main/img/2026-11-12_14-33-18.png)
+
+5. Повторите SQL-запрос на сервере и приложите скриншот и ссылку на fork.
+
+![](https://github.com/netolearning777/Docker_part2_practice-hw/blob/main/img/VirtualBox_ubuntu-desktop-24_12_11_2026_14_20_09.png)
+
+![](https://github.com/netolearning777/Docker_part2_practice-hw/blob/main/img/VirtualBox_ubuntu-desktop-24_12_11_2026_14_31_01.png)
 
 ## Задача 6
 Скачайте docker образ ```hashicorp/terraform:latest``` и скопируйте бинарный файл ```/bin/terraform``` на свою локальную машину, используя dive и docker save.
