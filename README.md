@@ -1,4 +1,4 @@
-# Домашнее задание к занятию 5. «Практическое применение Docker»
+# Домашнее задание «Практическое применение Docker» - Гусев Алексей
 
 ## Задача 1
 1. Сделайте в своем GitHub пространстве fork [репозитория](https://github.com/netology-code/shvirtd-example-python).
@@ -30,11 +30,17 @@
 
 2. Запустите проект локально с помощью docker compose , добейтесь его стабильной работы: команда ```curl -L http://127.0.0.1:8090``` должна возвращать в качестве ответа время и локальный IP-адрес. Если сервисы не стартуют воспользуйтесь командами: ```docker ps -a ``` и ```docker logs <container_name>``` . Если вместо IP-адреса вы получаете информационную ошибку --убедитесь, что вы шлете запрос на порт ```8090```, а не 5000.
 
+![](https://github.com/netolearning777/Docker_part2_practice-hw/blob/main/img/VirtualBox_ubuntu-desktop-24_12_11_2026_12_58_13.png)
+
 5. Подключитесь к БД mysql с помощью команды ```docker exec -ti <имя_контейнера> mysql -uroot -p<пароль root-пользователя>```(обратите внимание что между ключем -u и логином root нет пробела. это важно!!! тоже самое с паролем) . Введите последовательно команды (не забываем в конце символ ; ): ```show databases; use <имя вашей базы данных(по-умолчанию virtd, как это указано в .env)>; show tables; SELECT * from requests LIMIT 10;```. Примечание: таблица в БД создается после первого поступившего запроса к приложению.
 
 6. Остановите проект. В качестве ответа приложите скриншот sql-запроса.
 
-[]!(https://github.com/netolearning777/Docker_part2-hw/blob/main/compose.yaml)
+![](https://github.com/netolearning777/Docker_part2_practice-hw/blob/main/img/VirtualBox_ubuntu-desktop-24_12_11_2026_11_06_05.png)
+
+![](https://github.com/netolearning777/Docker_part2_practice-hw/blob/main/img/VirtualBox_ubuntu-desktop-24_12_11_2026_11_06_38.png)
+
+![](https://github.com/netolearning777/Docker_part2_practice-hw/blob/main/img/VirtualBox_ubuntu-desktop-24_12_11_2026_11_07_36.png)
 
 ## Задача 4
 1. Запустите в Yandex Cloud ВМ (вам хватит 2 Гб Ram).
