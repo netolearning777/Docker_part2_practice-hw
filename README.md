@@ -65,10 +65,10 @@
 Скачайте docker образ ```hashicorp/terraform:latest``` и скопируйте бинарный файл ```/bin/terraform``` на свою локальную машину, используя dive и docker save.
 Предоставьте скриншоты  действий.
 
-![]()
+![](https://github.com/netolearning777/Docker_part2_practice-hw/blob/main/img/VirtualBox_ubuntu-desktop-24_13_11_2026_14_33_04.png)
 
-![]()
+![](https://github.com/netolearning777/Docker_part2_practice-hw/blob/main/img/VirtualBox_ubuntu-desktop-24_13_11_2026_13_56_40.png)
 
-![]()
+![](https://github.com/netolearning777/Docker_part2_practice-hw/blob/main/img/VirtualBox_ubuntu-desktop-24_13_11_2026_14_33_33.png)
 
-![]()
+![](https://github.com/netolearning777/Docker_part2_practice-hw/blob/main/img/VirtualBox_ubuntu-desktop-24_13_11_2026_14_33_59.png)
