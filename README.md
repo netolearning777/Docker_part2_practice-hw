@@ -10,11 +10,11 @@
    - Используйте ```CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"]``` для запуска
    - Протестируйте корректность сборки
 
-[ссылка Dockerfile.python](https://github.com/netolearning777/Docker_part2-hw/blob/main/Dockerfile.python)
+[ссылка Dockerfile.python](https://github.com/netolearning777/shvirtd-example-python/blob/main/Dockerfile.python)
 
 2.1 Используйте multistage сборку вместо single stage.
 
-[ссылка Dockerfile_multistage.python](https://github.com/netolearning777/Docker_part2-hw/blob/main/Dockerfile_multistage.python)
+[ссылка Dockerfile_multistage.python](https://github.com/netolearning777/shvirtd-example-python/blob/main/Dockerfile_multistage.python)
 
 ## Задача 3
 1. Изучите файл "proxy.yaml"
@@ -26,7 +26,7 @@
 
 - ```db```. image=mysql:8. Контейнер должен работать в bridge-сети с названием ```backend``` и иметь фиксированный ipv4-адрес ```172.20.0.10```. Явно перезапуск сервиса в случае ошибок. Передайте необходимые ENV-переменные для создания: пароля root пользователя, создания базы данных, пользователя и пароля для web-приложения.Обязательно используйте уже существующий .env file для назначения секретных ENV-переменных!
 
-[ссылка compose.yaml](https://github.com/netolearning777/Docker_part2-hw/blob/main/compose.yaml)
+[ссылка compose.yaml](https://github.com/netolearning777/shvirtd-example-python/blob/main/compose.yaml)
 
 2. Запустите проект локально с помощью docker compose , добейтесь его стабильной работы: команда ```curl -L http://127.0.0.1:8090``` должна возвращать в качестве ответа время и локальный IP-адрес. Если сервисы не стартуют воспользуйтесь командами: ```docker ps -a ``` и ```docker logs <container_name>``` . Если вместо IP-адреса вы получаете информационную ошибку --убедитесь, что вы шлете запрос на порт ```8090```, а не 5000.
 
@@ -47,7 +47,7 @@
 2. Подключитесь к Вм по ssh и установите docker.
 3. Напишите bash-скрипт, который скачает ваш fork-репозиторий в каталог /opt и запустит проект целиком.
 
-[ссылка на deploy.sh](https://github.com/netolearning777/Docker_part2_practice-hw/blob/main/deploy.sh)
+[ссылка на deploy.sh](https://github.com/netolearning777/shvirtd-example-python/blob/main/deploy.sh)
 
 4. Зайдите на сайт проверки http подключений, например(или аналогичный): ```https://check-host.net/check-http``` и запустите проверку вашего сервиса ```http://<внешний_IP-адрес_вашей_ВМ>:8090```. Таким образом трафик будет направлен в ingress-proxy. Трафик должен пройти через цепочки: Пользователь → Internet → Nginx → HAProxy → FastAPI(запись в БД) → HAProxy → Nginx → Internet → Пользователь
 
